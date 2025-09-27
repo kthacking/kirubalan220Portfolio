@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Dark Portfolio Design System */
+
+@layer base {
+  :root {
+    /* Core backgrounds - Deep blacks with subtle variations */
+    --background: 0 0% 2.7%; /* #070506 */
+    --background-secondary: 0 0% 3.9%; /* #0f0b0a */
+    --foreground: 0 0% 98%;
+
+    /* Glowing Orange System */
+    --primary: 18 100% 50%; /* #FF6A00 */
+    --primary-light: 23 100% 58%; /* #FF8C2B */
+    --primary-gold: 37 100% 71%; /* #FFB86B */
+    --primary-foreground: 0 0% 98%;
+
+    /* Glass panels and cards */
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
+    --glass: 0 0% 8% / 0.3;
+    --glass-border: 0 0% 20% / 0.2;
+
+    /* Interactive elements */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 90%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 18 100% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 8%;
+    --ring: 18 100% 50%;
+
+    --radius: 1rem;
+
+    /* Custom design tokens */
+    --glow-orange: 18 100% 50%;
+    --glow-gold: 37 100% 71%;
+    --text-glow: 0 0% 98%;
+    --chart-green: 142 76% 36%;
+    
+    /* Gradients */
+    --gradient-radial: radial-gradient(circle at center, hsl(18 100% 50% / 0.8) 0%, hsl(23 100% 58% / 0.4) 40%, transparent 70%);
+    --gradient-orange: linear-gradient(135deg, hsl(18 100% 50%), hsl(23 100% 58%));
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 8% / 0.4), hsl(0 0% 12% / 0.2));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 6% / 0.8), hsl(0 0% 4% / 0.6));
+    
+    /* Shadows and glows */
+    --shadow-glow: 0 0 40px hsl(18 100% 50% / 0.4);
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
+    --text-shadow-glow: 0 0 20px hsl(18 100% 50% / 0.6);
+  }
+
+  /* Dark theme is default for this portfolio */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter overflow-x-hidden;
+    background: 
+      radial-gradient(circle at 20% 20%, hsl(18 100% 50% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(23 100% 58% / 0.08) 0%, transparent 50%),
+      hsl(var(--background));
+  }
+  
+  /* Futuristic scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
+
+@layer components {
+  /* Glass morphism utilities */
+  .glass-panel {
+    @apply backdrop-blur-xl border border-white/10;
+    background: var(--gradient-glass);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-lg border border-white/5;
+    background: var(--gradient-card);
+    box-shadow: 0 4px 16px hsl(0 0% 0% / 0.4);
+  }
+  
+  /* Glow effects */
+  .glow-text {
+    text-shadow: var(--text-shadow-glow);
+  }
+  
+  .glow-orange {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Noise texture overlay */
+  .noise-texture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 20px 20px;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+  
+  /* Animation utilities */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .glow-pulse {
+    animation: glowPulse 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  /* Text gradients */
+  .text-gradient-orange {
+    background: var(--gradient-orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 20px hsl(18 100% 50% / 0.3);
+  }
+  to {
+    box-shadow: 0 0 40px hsl(18 100% 50% / 0.6);
+  }
+}
